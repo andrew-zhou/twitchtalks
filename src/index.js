@@ -7,6 +7,18 @@ import initializeDb from './db';
 import middleware from './middleware';
 import api from './api';
 import config from './config.json';
+import firebase from 'firebase';
+
+const firebaseConfig = {
+	apiKey: "AIzaSyB4scCuErPLd0mnfOmw7MvVxUUj-jiPMXs",
+	authDomain: "twitchtalks-72534.firebaseapp.com",
+	databaseURL: "https://twitchtalks-72534.firebaseio.com",
+	projectId: "twitchtalks-72534",
+	storageBucket: "twitchtalks-72534.appspot.com",
+	messagingSenderId: "1077739307518"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 let app = express();
 app.server = http.createServer(app);
