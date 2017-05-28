@@ -29,7 +29,7 @@ const upload = (key, file, onSuccess, onError) => {
 
 const getUrl = key => s3.getPublicUrlHttp(bucket, key);
 
-export default {
+module.exports = {
 	client,
 	upload,
 	getUrl,
