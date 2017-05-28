@@ -4,8 +4,8 @@ const bucket = 'jabber-speeches';
 
 const client = s3.createClient({
 	s3Options: {
-		accessKeyId: 'AKIAJA344F2GFNN45KUA',
-    secretAccessKey: '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',
+		accessKeyId: 'AKIAIRBNCMD3IDQQTGGQ',
+    secretAccessKey: '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',
     region: 'us-east-2',
 		signatureVersion: 'v3',
 	},
@@ -17,6 +17,7 @@ const upload = (key, file, onSuccess, onError) => {
 		s3Params: {
 			Bucket: bucket,
 			Key: key,
+			ContentType: file.mimetype,
 		},
 	};
 	const uploader = client.uploadFile(params);
