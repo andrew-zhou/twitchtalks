@@ -3,11 +3,11 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import initializeDb from './db';
-import middleware from './middleware';
-import api from './api';
-import config from './config.json';
 import firebase from 'firebase';
+import initializeDb from './src/db';
+import middleware from './src/middleware';
+import api from './src/api';
+import config from './config.json';
 
 const firebaseConfig = {
 	apiKey: "AIzaSyB4scCuErPLd0mnfOmw7MvVxUUj-jiPMXs",
@@ -39,7 +39,7 @@ app.use(bodyParser.json({
 initializeDb( db => {
 
 	// internal middleware
-	app.use(middleware({ config, db }));
+	// app.use(middleware({ config, db }));
 
 	// api router
 	app.use('/api', api({ config, db }));
