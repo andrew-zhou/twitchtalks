@@ -1,5 +1,5 @@
-import firebase from 'firebase';
-import s3client from '../lib/s3_client';
+const firebase = require('firebase');
+const s3client = require('../lib/s3_client');
 
 const upload = (req, res) => {
 	// Upload to S3
@@ -31,6 +31,6 @@ const upload = (req, res) => {
 	});
 };
 
-export default {
+module.exports = {
 	upload,
 };

@@ -1,4 +1,4 @@
-import s3 from 's3';
+const s3 = require('s3');
 
 const bucket = 'jabber-speeches';
 

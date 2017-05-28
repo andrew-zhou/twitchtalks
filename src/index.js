@@ -1,13 +1,12 @@
-import http from 'http';
-import express from 'express';
-import cors from 'cors';
-import morgan from 'morgan';
-import bodyParser from 'body-parser';
-import initializeDb from './db';
-import middleware from './middleware';
-import api from './api';
-import config from './config.json';
-import firebase from 'firebase';
+const http = require("http");
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const middleware = require("./middleware");
+const api = require("./api");
+const config = require("./config.json");
+const firebase = require("firebase");
 
 const firebaseConfig = {
 	apiKey: "AIzaSyB4scCuErPLd0mnfOmw7MvVxUUj-jiPMXs",
@@ -35,18 +34,14 @@ app.use(bodyParser.json({
 	limit : config.bodyLimit
 }));
 
-// connect to db
-initializeDb( db => {
+// internal middleware
+app.use(middleware({ config }));
 
-	// internal middleware
-	app.use(middleware({ config, db }));
+// api router
+app.use('/api', api({ config }));
 
-	// api router
-	app.use('/api', api({ config, db }));
-
-	app.server.listen(process.env.PORT || config.port, () => {
-		console.log(`Started on port ${app.server.address().port}`);
-	});
+app.server.listen(process.env.PORT || config.port, () => {
+	console.log(`Started on port ${app.server.address().port}`);
 });
 
-export default app;
+module.exports = app;

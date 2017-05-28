@@ -1,11 +1,11 @@
-import { Router } from 'express';
-import multer from 'multer';
-import speech from './speech';
+const express = require('express');
+const multer = require('multer');
+const speech = require('./speech');
 
 const upload = multer({ dest: './res/' });
 
-export default ({ config, db }) => {
-	let api = Router();
+module.exports = ({ config }) => {
+	let api = express.Router();
 
 	// mount the facets resource
 
