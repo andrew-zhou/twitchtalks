@@ -2,7 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import speech from './speech';
 
-const upload = multer({ dest: '../../res/' });
+const upload = multer({ dest: './res/' });
 
 export default ({ config, db }) => {
 	let api = Router();
