@@ -5,7 +5,7 @@ const upload = (req, res) => {
 	// Upload to S3
 	const {file} = req;
 	const {originalname} = file;
-	const {uid} = req.headers;
+	const {uid,title} = req.headers;
 
 	if (!uid) {
 		return res.status(403).json({error: 'No user provided.'});
@@ -21,7 +21,7 @@ const upload = (req, res) => {
 		const db = firebase.database();
 		const key = db.ref().child('speeches').push().key;
 		db.ref(`speeches/${key}`).set({
-			name: file.originalname,
+			name: title,
 			uid: req.headers.uid,
 			url,
 		});
