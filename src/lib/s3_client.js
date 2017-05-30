@@ -4,8 +4,8 @@ const bucket = 'jabber-speeches';
 
 const client = s3.createClient({
 	s3Options: {
-		accessKeyId: 'AKIAIRBNCMD3IDQQTGGQ',
-    secretAccessKey: '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',
+		accessKeyId: 'AKIAJACKKFVYMO6WTNHQ',
+    secretAccessKey: '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',
     region: 'us-east-2',
 		signatureVersion: 'v3',
 	},
